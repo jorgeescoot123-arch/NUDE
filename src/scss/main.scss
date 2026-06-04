@@ -1,0 +1,22 @@
+// Base styles and configurations
+@import "base/variables";
+@import "base/mixins";
+@import "base/reset";
+
+// Reusable components
+@import "components/buttons";
+@import "components/cards";
+@import "components/form";
+@import "components/gallery";
+@import "components/modal";
+
+// Layout components
+@import "layout/header";
+@import "layout/footer";
+
+// Page-specific styles
+@import "pages/inicio";
+@import "pages/reservaciones";
+@import "pages/opiniones";
+@import "pages/croquis";
+@import "pages/contacto";

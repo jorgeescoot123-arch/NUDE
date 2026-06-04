@@ -1,0 +1,17 @@
+{
+  "name": "nude-club",
+  "version": "1.0.0",
+  "description": "Sitio web oficial de NUDE - Antro Premium en Jalpa, Zacatecas",
+  "main": "dist/js/main.js",
+  "scripts": {
+    "sass": "sass src/scss:dist/css --style=expanded --source-map",
+    "watch": "sass src/scss:dist/css --style=expanded --source-map --watch",
+    "dev": "sass src/scss:dist/css --style=expanded --source-map --watch",
+    "build": "sass src/scss:dist/css --style=compressed --no-source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  },
+  "author": "Antigravity",
+  "license": "ISC"
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | NUDE Premium Club</title>
+  <meta name="description" content="Ponte en contacto con NUDE Club en Jalpa. Envíanos tus dudas, comentarios o cotizaciones para eventos privados a través de nuestro formulario.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="dist/css/main.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">NU<span>DE</span></a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="reservaciones.html" class="nav-link">Reservaciones</a></li>
+        <li><a href="opiniones.html" class="nav-link">Opiniones</a></li>
+        <li><a href="croquis.html" class="nav-link">Croquis</a></li>
+        <li><a href="contacto.html" class="nav-link active">Contacto</a></li>
+        <li><a href="reservaciones.html" class="btn btn-secondary nav-cta">Reservar</a></li>
+      </ul>
+
+      <button class="burger-btn" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="reservaciones.html" class="nav-link">Reservaciones</a>
+    <a href="opiniones.html" class="nav-link">Opiniones</a>
+    <a href="croquis.html" class="nav-link">Croquis</a>
+    <a href="contacto.html" class="nav-link active">Contacto</a>
+    <a href="reservaciones.html" class="btn btn-secondary nav-cta">Reservar</a>
+  </div>
+
+  <section class="page-header">
+    <div class="container">
+      <h1 class="text-gradient-purple reveal">Ponte en Contacto</h1>
+      <p class="section-subtitle reveal">¿Tienes alguna duda, comentario o buscas cotizar un evento privado? Escríbenos y te responderemos a la brevedad.</p>
+    </div>
+  </section>
+
+  <section class="contact-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="contact-layout">
+        
+        <div class="contact-info-cards reveal">
+          <h2 class="section-title text-gradient-pink" style="font-size: 1.8rem; margin-bottom: 25px; text-align: left;">Información</h2>
+          
+          <div class="contact-detail-card">
+            <div class="contact-icon-box"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-text-box">
+              <h4>Dirección</h4>
+              <p>Av. Hidalgo #123, Centro, Jalpa, Zacatecas</p>
+            </div>
+          </div>
+
+          <div class="contact-detail-card pink-contact-card">
+            <div class="contact-icon-box"><i class="fas fa-phone"></i></div>
+            <div class="contact-text-box">
+              <h4>Teléfono</h4>
+              <p><a href="tel:+524631002030">+52 (463) 100-2030</a></p>
+            </div>
+          </div>
+
+          <div class="contact-detail-card gold-contact-card">
+            <div class="contact-icon-box"><i class="fab fa-whatsapp"></i></div>
+            <div class="contact-text-box">
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/524631002030" target="_blank">+52 (463) 100-2030</a></p>
+            </div>
+          </div>
+
+          <div class="contact-detail-card">
+            <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
+            <div class="contact-text-box">
+              <h4>Correo Electrónico</h4>
+              <p><a href="mailto:info@nudeclub.mx">info@nudeclub.mx</a></p>
+            </div>
+          </div>
+
+          <div class="contact-detail-card pink-contact-card">
+            <div class="contact-icon-box"><i class="fas fa-share-nodes"></i></div>
+            <div class="contact-text-box">
+              <h4>Redes Sociales</h4>
+              <div class="social-links" style="margin-top: 8px;">
+                <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon social-pink" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-glass contact-form-card reveal" style="transition-delay: 0.1s;">
+          <h2 class="section-title text-gradient-purple" style="font-size: 1.8rem; margin-bottom: 30px; text-align: left;">Enviar Mensaje</h2>
+          
+          <div id="contactSuccessBanner" class="card-glass card-pink-glow" style="display: none; padding: 20px; margin-bottom: 25px; text-align: center;">
+            <i class="fas fa-paper-plane" style="color: #ff007f; font-size: 2rem; margin-bottom: 10px;"></i>
+            <h4 style="margin-bottom: 5px;">¡Mensaje Enviado con Éxito!</h4>
+            <p style="font-size: 0.85rem; color: #9c98b3;">Hemos recibido tu mensaje. Nos comunicaremos contigo por correo electrónico a la brevedad.</p>
+          </div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-group">
+              <label for="contactName">Nombre Completo</label>
+              <input type="text" id="contactName" class="form-control" placeholder="Escribe tu nombre" required>
+              <span class="error-message">Introduce tu nombre completo.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">Correo Electrónico</label>
+              <input type="email" id="contactEmail" class="form-control pink-focus" placeholder="correo@ejemplo.com" required>
+              <span class="error-message">Introduce un correo electrónico válido.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactSubject">Asunto</label>
+              <select id="contactSubject" class="form-select" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Dudas / Preguntas">Dudas / Preguntas generales</option>
+                <option value="Eventos Privados">Cotización de Eventos Privados</option>
+                <option value="Reservaciones Especiales">Reservación para grupos grandes (+15)</option>
+                <option value="Quejas y Sugerencias">Quejas / Sugerencias</option>
+              </select>
+              <span class="error-message">Selecciona el asunto de tu mensaje.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Mensaje</label>
+              <textarea id="contactMessage" class="form-control pink-focus" placeholder="Escribe tu mensaje aquí..." required></textarea>
+              <span class="error-message">El mensaje debe tener al menos 15 caracteres.</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Enviar Mensaje</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">NU<span>DE</span></a>
+          <p>Las mejores noches de Jalpa comienzan aquí. Vive una experiencia premium e inigualable con la mejor música, ambiente y servicio VIP.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon social-pink" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon social-pink" aria-label="Facebook Messenger"><i class="fab fa-facebook-messenger"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="reservaciones.html">Reservaciones</a></li>
+            <li><a href="opiniones.html">Opiniones</a></li>
+            <li><a href="croquis.html">Croquis</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-info">
+          <h4>Contacto</h4>
+          <ul>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Av. Hidalgo #123, Centro, Jalpa, Zacatecas, México</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <a href="tel:+524631002030">+52 (463) 100-2030</a>
+            </li>
+            <li>
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/524631002030" target="_blank">+52 (463) 100-2030</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:info@nudeclub.mx">info@nudeclub.mx</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-hours">
+          <h4>Horarios</h4>
+          <ul>
+            <li><span>Jueves</span> <span>10:00 PM - 4:00 AM</span></li>
+            <li><span>Viernes</span> <span>10:00 PM - 5:00 AM</span></li>
+            <li><span>Sábado</span> <span>10:00 PM - 5:00 AM</span></li>
+            <li><span>Dom - Mié</span> <span>Cerrado</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NUDE Club. Todos los derechos reservados. Proyecto académico de desarrollo web.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="dist/js/auth.js"></script>
+  <script src="dist/js/main.js"></script>
+  <script src="dist/js/contacto.js"></script>
+  <script>AUTH.renderNavUser();</script>
+</body>
+</html>

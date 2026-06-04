@@ -1,0 +1,37 @@
+// Theme Colors
+$color-bg: #060209;
+$color-bg-darker: #020004;
+$color-bg-card: rgba(18, 9, 28, 0.6);
+$color-bg-card-hover: rgba(28, 14, 43, 0.85);
+
+$color-neon-purple: #bc00dd;
+$color-neon-purple-glow: rgba(188, 0, 221, 0.5);
+
+$color-neon-pink: #ff007f;
+$color-neon-pink-glow: rgba(255, 0, 127, 0.5);
+
+$color-vip-gold: #ffc83b;
+$color-vip-gold-glow: rgba(255, 200, 59, 0.4);
+
+$color-white: #ffffff;
+$color-text: #e1def0;
+$color-text-muted: #9c98b3;
+$color-border: rgba(255, 255, 255, 0.08);
+$color-border-glow: rgba(188, 0, 221, 0.25);
+
+// Typography
+$font-primary: 'Inter', sans-serif;
+$font-heading: 'Outfit', sans-serif;
+
+// Responsive Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Transitions & Grid
+$transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+$transition-slow: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+$border-radius: 16px;
+$border-radius-lg: 24px;
+$container-width: 1200px;

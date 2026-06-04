@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubicación y Croquis | NUDE Premium Club</title>
+  <meta name="description" content="Encuentra cómo llegar a NUDE en Jalpa. Consulta nuestro croquis detallado y mapa interactivo. Ubicado en Av. Hidalgo, Centro, Jalpa.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="dist/css/main.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">NU<span>DE</span></a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="reservaciones.html" class="nav-link">Reservaciones</a></li>
+        <li><a href="opiniones.html" class="nav-link">Opiniones</a></li>
+        <li><a href="croquis.html" class="nav-link active">Croquis</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        <li><a href="reservaciones.html" class="btn btn-secondary nav-cta">Reservar</a></li>
+      </ul>
+
+      <button class="burger-btn" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="reservaciones.html" class="nav-link">Reservaciones</a>
+    <a href="opiniones.html" class="nav-link">Opiniones</a>
+    <a href="croquis.html" class="nav-link active">Croquis</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+    <a href="reservaciones.html" class="btn btn-secondary nav-cta">Reservar</a>
+  </div>
+
+  <section class="page-header">
+    <div class="container">
+      <h1 class="text-gradient-purple reveal">NUDE - Jalpa, Jalisco</h1>
+      <p class="section-subtitle reveal">Consulta nuestro croquis detallado e indicaciones para llegar sin complicaciones a la mejor fiesta.</p>
+    </div>
+  </section>
+
+  <section class="croquis-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="croquis-layout">
+        
+        <div class="croquis-visual-container reveal">
+          <h3>Croquis de Acceso</h3>
+          
+          <div class="croquis-canvas-wrapper">
+            <svg viewBox="0 0 500 350" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 420,0 C 430,100 400,200 450,350" fill="none" stroke="rgba(0, 127, 255, 0.2)" stroke-width="25" stroke-linecap="round"/>
+              <path d="M 420,0 C 430,100 400,200 450,350" fill="none" stroke="rgba(0, 127, 255, 0.4)" stroke-width="4" stroke-dasharray="8,8"/>
+
+              <line x1="50" y1="90" x2="380" y2="90" class="glowing-road"/>
+              <line x1="50" y1="180" x2="380" y2="180" class="glowing-road main-avenue"/>
+              <line x1="50" y1="270" x2="380" y2="270" class="glowing-road"/>
+            
+              <line x1="120" y1="40" x2="120" y2="310" class="glowing-road"/>
+              <line x1="240" y1="40" x2="240" y2="310" class="glowing-road"/>
+              <line x1="340" y1="40" x2="340" y2="310" class="glowing-road"/>
+
+              <line x1="50" y1="90" x2="380" y2="90" class="glowing-road-inner"/>
+              <line x1="50" y1="180" x2="380" y2="180" class="glowing-road-inner main-avenue-inner"/>
+              <line x1="50" y1="270" x2="380" y2="270" class="glowing-road-inner"/>
+              
+              <line x1="120" y1="40" x2="120" y2="310" class="glowing-road-inner"/>
+              <line x1="240" y1="40" x2="240" y2="310" class="glowing-road-inner"/>
+              <line x1="340" y1="40" x2="340" y2="310" class="glowing-road-inner"/>
+
+              <rect x="145" y="110" width="70" height="50" rx="4" class="landmark"/>
+              <text x="180" y="140" text-anchor="middle" class="text-landmark" style="font-size: 8px;">Jardín Principal</text>
+
+              <!-- Presidencia Municipal -->
+              <rect x="145" y="45" width="70" height="30" rx="4" class="landmark"/>
+              <text x="180" y="64" text-anchor="middle" class="text-landmark" style="font-size: 7px;">Presidencia</text>
+
+              <text x="445" y="170" text-anchor="middle" class="text-street" transform="rotate(75, 445, 170)" style="fill: rgba(0, 127, 255, 0.6); font-size: 8px;">Río Juchipila</text>
+
+              <text x="75" y="82" class="text-street">C. Juárez</text>
+              <text x="75" y="172" class="text-street" style="fill: #bc00dd;">Av. Hidalgo</text>
+              <text x="75" y="262" class="text-street">C. Obregón</text>
+
+              <text x="112" y="325" text-anchor="middle" class="text-street">C. Madero</text>
+              <text x="232" y="325" text-anchor="middle" class="text-street">C. Zaragoza</text>
+              <text x="332" y="325" text-anchor="middle" class="text-street">C. Reforma</text>
+
+              <circle cx="285" cy="180" r="14" class="nude-spot-outer"/>
+              <circle cx="285" cy="180" r="7" class="nude-spot-glow"/>
+              <path d="M 285,173 L 280,155 L 320,155 L 320,135 L 350,135 L 350,155 L 290,155 Z" fill="none"/>
+              
+              <g transform="translate(285, 135)">
+                <rect x="-35" y="-18" width="70" height="22" rx="4" fill="rgba(6,2,9,0.9)" stroke="#ff007f" stroke-width="1.5" style="filter: drop-shadow(0 0 5px rgba(255,0,127,0.4));"/>
+                <text x="0" y="-3" text-anchor="middle" fill="#ffffff" font-family="'Outfit', sans-serif" font-weight="900" font-size="11px" letter-spacing="1">NU<tspan fill="#ff007f">DE</tspan></text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="map-iframe-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14849.65825316377!2d-102.98661706691456!3d21.637887713840742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84258c732fbdf6a9%3A0xc47e4526dfba77f1!2sJalpa%2C%20Zacatecas!5e0!3m2!1ses-419!2smx!4v1686000000000!5m2!1ses-419!2smx" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="location-info-panel reveal" style="transition-delay: 0.1s;">
+          
+          <div class="references-card">
+            <h3>Referencias Cercanas</h3>
+            
+            <div class="reference-item">
+              <div class="ref-icon"><i class="fas fa-building-flag"></i></div>
+              <div class="ref-details">
+                <h4>Presidencia Municipal</h4>
+                <p>Ubicados a solo 2 cuadras al este del Palacio Municipal, caminando sobre la Avenida Hidalgo.</p>
+              </div>
+            </div>
+
+            <div class="reference-item">
+              <div class="ref-icon"><i class="fas fa-tree"></i></div>
+              <div class="ref-details">
+                <h4>Jardín Principal (Plaza Zaragoza)</h4>
+                <p>A 150 metros del quiosco del Jardín Principal. Cruza la calle Zaragoza hacia el este.</p>
+              </div>
+            </div>
+
+            <div class="reference-item">
+              <div class="ref-icon"><i class="fas fa-water"></i></div>
+              <div class="ref-details">
+                <h4>Río Juchipila</h4>
+                <p>Nuestra calle desemboca hacia la zona del río. Ubicación céntrica y de fácil acceso.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="directions-instructions">
+            <h3>Cómo Llegar</h3>
+            <ol>
+              <li>Si vienes desde la <strong>Carretera Federal 54 (Guadalajara - Zacatecas)</strong>, toma la entrada principal hacia el Centro Histórico de Jalpa.</li>
+              <li>Sigue derecho por la <strong>Calle Hidalgo</strong> en dirección al poniente.</li>
+              <li>Pasando el <strong>Jardín Principal</strong> y cruzando la calle <strong>Zaragoza</strong>, nos encontrarás a mano derecha, identificable por nuestras icónicas luces de neón moradas en la fachada.</li>
+            </ol>
+
+            <a href="https://maps.google.com/?q=Jalpa+Zacatecas+Centro" target="_blank" class="btn btn-secondary btn-block" style="margin-top: 25px;">
+              <i class="fas fa-location-arrow" style="margin-right: 8px;"></i> Cómo Llegar (Google Maps)
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">NU<span>DE</span></a>
+          <p>Las mejores noches de Jalpa comienzan aquí. Vive una experiencia premium e inigualable con la mejor música, ambiente y servicio VIP.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon social-pink" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon social-pink" aria-label="Facebook Messenger"><i class="fab fa-facebook-messenger"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="reservaciones.html">Reservaciones</a></li>
+            <li><a href="opiniones.html">Opiniones</a></li>
+            <li><a href="croquis.html">Croquis</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-info">
+          <h4>Contacto</h4>
+          <ul>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Av. Hidalgo #123, Centro, Jalpa, Zacatecas, México</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <a href="tel:+524631002030">+52 (463) 100-2030</a>
+            </li>
+            <li>
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/524631002030" target="_blank">+52 (463) 100-2030</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:info@nudeclub.mx">info@nudeclub.mx</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-hours">
+          <h4>Horarios</h4>
+          <ul>
+            <li><span>Jueves</span> <span>10:00 PM - 4:00 AM</span></li>
+            <li><span>Viernes</span> <span>10:00 PM - 5:00 AM</span></li>
+            <li><span>Sábado</span> <span>10:00 PM - 5:00 AM</span></li>
+            <li><span>Dom - Mié</span> <span>Cerrado</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NUDE Club. Todos los derechos reservados. Proyecto académico de desarrollo web.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="dist/js/auth.js"></script>
+  <script src="dist/js/main.js"></script>
+  <script>AUTH.renderNavUser();</script>
+</body>
+</html>

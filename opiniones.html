@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opiniones | NUDE Premium Club</title>
+  <meta name="description" content="Lee las opiniones y calificaciones de nuestros clientes en NUDE Jalpa. Comparte tu propia experiencia y califica nuestras noches, DJ y servicio VIP.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="dist/css/main.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">NU<span>DE</span></a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="reservaciones.html" class="nav-link">Reservaciones</a></li>
+        <li><a href="opiniones.html" class="nav-link active">Opiniones</a></li>
+        <li><a href="croquis.html" class="nav-link">Croquis</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        <li><a href="reservaciones.html" class="btn btn-secondary nav-cta">Reservar</a></li>
+      </ul>
+
+      <button class="burger-btn" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="reservaciones.html" class="nav-link">Reservaciones</a>
+    <a href="opiniones.html" class="nav-link active">Opiniones</a>
+    <a href="croquis.html" class="nav-link">Croquis</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+    <a href="reservaciones.html" class="btn btn-secondary nav-cta">Reservar</a>
+  </div>
+
+  <section class="page-header">
+    <div class="container">
+      <h1 class="text-gradient-pink reveal">Opiniones de Clientes</h1>
+      <p class="section-subtitle reveal">Tu opinión es lo más importante. Conoce lo que dicen nuestros clientes y cuéntanos tu experiencia.</p>
+    </div>
+  </section>
+
+  <section class="reviews-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="reviews-dashboard">
+        
+        <div class="reviews-summary reveal">
+          
+          <div class="rating-score-card">
+            <h3>Calificación General</h3>
+            <div class="big-score" id="averageRating">4.8</div>
+            <div class="stars-display" style="justify-content: center;" id="averageStars">
+            </div>
+            <p id="totalReviewsCount">Basado en 25 opiniones</p>
+            
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.05); margin: 20px 0;">
+
+            <div class="rating-bars" id="ratingBarsContainer">
+            </div>
+          </div>
+
+          <div class="card-glass booking-form-card" style="padding: 25px;">
+            <h3 class="section-title text-gradient-pink" style="font-size: 1.4rem; margin-bottom: 20px; text-align: left;">Escribir Reseña</h3>
+            
+            <form id="reviewForm" novalidate>
+              <div class="form-group">
+                <label for="reviewName">Tu Nombre</label>
+                <input type="text" id="reviewName" class="form-control" placeholder="Ej. Ana Pérez" required>
+                <span class="error-message">Introduce tu nombre.</span>
+              </div>
+
+              <div class="form-group">
+                <label>Calificación</label>
+                <div class="star-rating-input">
+                  <input type="radio" id="star1" name="rating" value="1" required>
+                  <label for="star1" title="1 estrella"><i class="fas fa-star"></i></label>
+                  
+                  <input type="radio" id="star2" name="rating" value="2">
+                  <label for="star2" title="2 estrellas"><i class="fas fa-star"></i></label>
+                  
+                  <input type="radio" id="star3" name="rating" value="3">
+                  <label for="star3" title="3 estrellas"><i class="fas fa-star"></i></label>
+                  
+                  <input type="radio" id="star4" name="rating" value="4">
+                  <label for="star4" title="4 estrellas"><i class="fas fa-star"></i></label>
+                  
+                  <input type="radio" id="star5" name="rating" value="5">
+                  <label for="star5" title="5 estrellas"><i class="fas fa-star"></i></label>
+                </div>
+                <span class="error-message" style="margin-top: -10px;">Selecciona una calificación de estrellas.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="reviewComment">Comentario</label>
+                <textarea id="reviewComment" class="form-control pink-focus" placeholder="Cuéntanos qué tal te la pasaste en NUDE..." required></textarea>
+                <span class="error-message">El comentario debe tener al menos 10 caracteres.</span>
+              </div>
+
+              <button type="submit" class="btn btn-secondary btn-block" style="margin-top: 10px;">Publicar Reseña</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="reviews-list-wrapper reveal" style="transition-delay: 0.1s;">
+          <div class="reviews-count-header">
+            <h3 id="listTitle">Reseñas Recientes</h3>
+            <div class="form-group" style="margin-bottom: 0;">
+              <select id="filterRating" class="form-select filter-select pink-focus">
+                <option value="all">Todas las calificaciones</option>
+                <option value="5">5 estrellas</option>
+                <option value="4">4 estrellas</option>
+                <option value="3">3 estrellas</option>
+                <option value="2">2 estrellas</option>
+                <option value="1">1 estrella</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="reviews-list-container" id="reviewsContainer">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="editReviewModal">
+    <div class="modal-container">
+      <button class="modal-close" id="closeEditModalBtn" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+      
+      <div class="modal-header">
+        <h3>Editar Reseña</h3>
+      </div>
+
+      <form id="editReviewForm" novalidate>
+        <div class="modal-body">
+          <input type="hidden" id="editReviewId">
+          
+          <div class="form-group">
+            <label for="editReviewName">Nombre</label>
+            <input type="text" id="editReviewName" class="form-control" required>
+            <span class="error-message">Introduce tu nombre.</span>
+          </div>
+
+          <div class="form-group">
+            <label>Calificación</label>
+            <div class="star-rating-input" id="editStarRating">
+              <input type="radio" id="editStar1" name="editRating" value="1" required>
+              <label for="editStar1"><i class="fas fa-star"></i></label>
+              
+              <input type="radio" id="editStar2" name="editRating" value="2">
+              <label for="editStar2"><i class="fas fa-star"></i></label>
+              
+              <input type="radio" id="editStar3" name="editRating" value="3">
+              <label for="editStar3"><i class="fas fa-star"></i></label>
+              
+              <input type="radio" id="editStar4" name="editRating" value="4">
+              <label for="editStar4"><i class="fas fa-star"></i></label>
+              
+              <input type="radio" id="editStar5" name="editRating" value="5">
+              <label for="editStar5"><i class="fas fa-star"></i></label>
+            </div>
+            <span class="error-message" style="margin-top: -10px;">Selecciona una calificación.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="editReviewComment">Comentario</label>
+            <textarea id="editReviewComment" class="form-control pink-focus" required></textarea>
+            <span class="error-message">El comentario debe tener al menos 10 caracteres.</span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-purple" id="btnCancelEdit" style="padding: 10px 20px; font-size: 0.85rem;">Cancelar</button>
+          <button type="submit" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;">Guardar Cambios</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">NU<span>DE</span></a>
+          <p>Las mejores noches de Jalpa comienzan aquí. Vive una experiencia premium e inigualable con la mejor música, ambiente y servicio VIP.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon social-pink" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon social-pink" aria-label="Facebook Messenger"><i class="fab fa-facebook-messenger"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="reservaciones.html">Reservaciones</a></li>
+            <li><a href="opiniones.html">Opiniones</a></li>
+            <li><a href="croquis.html">Croquis</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-info">
+          <h4>Contacto</h4>
+          <ul>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Av. Hidalgo #123, Centro, Jalpa, Zacatecas, México</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <a href="tel:+524631002030">+52 (463) 100-2030</a>
+            </li>
+            <li>
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/524631002030" target="_blank">+52 (463) 100-2030</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:info@nudeclub.mx">info@nudeclub.mx</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-hours">
+          <h4>Horarios</h4>
+          <ul>
+            <li><span>Jueves</span> <span>10:00 PM - 4:00 AM</span></li>
+            <li><span>Viernes</span> <span>10:00 PM - 5:00 AM</span></li>
+            <li><span>Sábado</span> <span>10:00 PM - 5:00 AM</span></li>
+            <li><span>Dom - Mié</span> <span>Cerrado</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NUDE Club. Todos los derechos reservados. Proyecto académico de desarrollo web.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="dist/js/auth.js"></script>
+  <script src="dist/js/main.js"></script>
+  <script src="dist/js/opiniones.js"></script>
+  <script>AUTH.renderNavUser();</script>
+</body>
+</html>

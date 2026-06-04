@@ -1,0 +1,104 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-family: $font-heading;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: $transition-smooth;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: -1;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.btn-primary {
+  background-color: $color-neon-purple;
+  color: $color-white;
+  box-shadow: 0 4px 15px rgba($color-neon-purple, 0.4);
+
+  &:hover {
+    box-shadow: 0 6px 25px rgba($color-neon-purple, 0.8);
+    @include text-glow-neon($color-neon-purple);
+  }
+}
+
+.btn-secondary {
+  background-color: $color-neon-pink;
+  color: $color-white;
+  box-shadow: 0 4px 15px rgba($color-neon-pink, 0.4);
+
+  &:hover {
+    box-shadow: 0 6px 25px rgba($color-neon-pink, 0.8);
+    @include text-glow-neon($color-neon-pink);
+  }
+}
+
+.btn-outline-purple {
+  background-color: transparent;
+  border-color: $color-neon-purple;
+  color: $color-white;
+
+  &:hover {
+    background-color: $color-neon-purple;
+    box-shadow: 0 6px 25px rgba($color-neon-purple, 0.7);
+    @include text-glow-neon($color-neon-purple);
+  }
+}
+
+.btn-outline-pink {
+  background-color: transparent;
+  border-color: $color-neon-pink;
+  color: $color-white;
+
+  &:hover {
+    background-color: $color-neon-pink;
+    box-shadow: 0 6px 25px rgba($color-neon-pink, 0.7);
+    @include text-glow-neon($color-neon-pink);
+  }
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, $color-vip-gold 0%, darken($color-vip-gold, 15%) 100%);
+  color: $color-bg-darker;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba($color-vip-gold, 0.3);
+
+  &:hover {
+    box-shadow: 0 6px 25px rgba($color-vip-gold, 0.7);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-block {
+  display: flex;
+  width: 100%;
+}

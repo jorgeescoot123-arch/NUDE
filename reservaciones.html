@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservaciones | NUDE Premium Club</title>
+  <meta name="description" content="Reserva tu mesa en NUDE Jalpa. Elige entre zonas General, VIP y Ultra VIP. Vive la mejor experiencia nocturna garantizando tu acceso de forma rápida.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="dist/css/main.css">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">NU<span>DE</span></a>
+      
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="reservaciones.html" class="nav-link active">Reservaciones</a></li>
+        <li><a href="opiniones.html" class="nav-link">Opiniones</a></li>
+        <li><a href="croquis.html" class="nav-link">Croquis</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+        <li><a href="reservaciones.html" class="btn btn-secondary nav-cta">Reservar</a></li>
+      </ul>
+
+      <button class="burger-btn" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="reservaciones.html" class="nav-link active">Reservaciones</a>
+    <a href="opiniones.html" class="nav-link">Opiniones</a>
+    <a href="croquis.html" class="nav-link">Croquis</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+    <a href="reservaciones.html" class="btn btn-secondary nav-cta">Reservar</a>
+  </div>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="text-gradient-purple reveal">Sistema de Reservaciones</h1>
+      <p class="section-subtitle reveal">Asegura tu mesa y vive una noche inigualable en las zonas más cotizadas.</p>
+    </div>
+  </section>
+
+  <!-- Booking Section -->
+  <section class="booking-section" style="padding-top: 0;">
+    <div class="container">
+      <div class="booking-layout">
+        
+        <!-- Table Tiers Info -->
+        <div class="table-tiers reveal">
+          <h2 class="section-title text-gradient-pink" style="font-size: 1.8rem; margin-bottom: 20px; text-align: left;">Tipos de Mesa</h2>
+          
+          <!-- General -->
+          <div class="tier-card tier-general">
+            <div class="tier-header">
+              <h3>Mesa General</h3>
+              <span class="tier-badge">Estándar</span>
+            </div>
+            <p>Perfecto para grupos pequeños que quieren una base cómoda y disfrutar de la mejor pista de Jalpa.</p>
+            <ul class="tier-perks">
+              <li><i class="fas fa-check"></i> Acceso rápido para 4-6 personas</li>
+              <li><i class="fas fa-check"></i> Mesa de pista</li>
+              <li><i class="fas fa-check"></i> Consumo mínimo básico</li>
+            </ul>
+          </div>
+
+          <!-- VIP -->
+          <div class="tier-card tier-vip">
+            <div class="tier-header">
+              <h3>Mesa VIP</h3>
+              <span class="tier-badge">Preferente</span>
+            </div>
+            <p>Ubicación elevada con excelente vista del antro, mayor espacio y atención personalizada en sala dedicada.</p>
+            <ul class="tier-perks">
+              <li><i class="fas fa-check"></i> Acceso rápido preferencial</li>
+              <li><i class="fas fa-check"></i> Espacio para 6-8 personas</li>
+              <li><i class="fas fa-check"></i> Servicio de mesero dedicado</li>
+              <li><i class="fas fa-check"></i> Consumo mínimo medio</li>
+            </ul>
+          </div>
+
+          <!-- Ultra VIP -->
+          <div class="tier-card tier-ultravip">
+            <div class="tier-header">
+              <h3>Sala Ultra VIP</h3>
+              <span class="tier-badge" style="color: #ffc83b;">Premium Gold</span>
+            </div>
+            <p>La experiencia definitiva. Salas de lujo ubicadas junto al escenario y DJ, con atención de máximo nivel y cortesías.</p>
+            <ul class="tier-perks">
+              <li><i class="fas fa-check"></i> Acceso inmediato Fast-Pass</li>
+              <li><i class="fas fa-check"></i> Espacio hasta para 12 personas</li>
+              <li><i class="fas fa-check"></i> Seguridad privada exclusiva</li>
+              <li><i class="fas fa-check"></i> Botella premium de cortesía</li>
+              <li><i class="fas fa-check"></i> Consumo libre premium</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Reservation Form -->
+        <div class="card-glass booking-form-card reveal" style="transition-delay: 0.1s;">
+          <h2 class="section-title text-gradient-purple" style="font-size: 1.8rem; margin-bottom: 30px; text-align: left;">Detalles de la Reserva</h2>
+          
+          <form id="bookingForm" novalidate>
+            <!-- Name -->
+            <div class="form-group">
+              <label for="nombre">Nombre Completo</label>
+              <input type="text" id="nombre" class="form-control" placeholder="Escribe tu nombre y apellido" required>
+              <span class="error-message">Por favor, introduce tu nombre completo.</span>
+            </div>
+
+            <div class="form-row">
+              <!-- Phone -->
+              <div class="form-group">
+                <label for="telefono">Teléfono / WhatsApp</label>
+                <input type="tel" id="telefono" class="form-control" placeholder="Ej. 4631234567" pattern="[0-9]{10}" required>
+                <span class="error-message">Introduce un número de teléfono válido (10 dígitos).</span>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" class="form-control pink-focus" placeholder="correo@ejemplo.com" required>
+                <span class="error-message">Introduce un correo electrónico válido.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <!-- Date -->
+              <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha" class="form-control" required>
+                <span class="error-message">Selecciona una fecha (Jueves, Viernes o Sábado).</span>
+              </div>
+
+              <!-- Time -->
+              <div class="form-group">
+                <label for="hora">Hora de Llegada</label>
+                <select id="hora" class="form-select pink-focus" required>
+                  <option value="" disabled selected>Selecciona una hora</option>
+                  <option value="22:00">10:00 PM</option>
+                  <option value="22:30">10:30 PM</option>
+                  <option value="23:00">11:00 PM</option>
+                  <option value="23:30">11:30 PM</option>
+                  <option value="00:00">12:00 AM</option>
+                </select>
+                <span class="error-message">Selecciona una hora de llegada.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <!-- Guests -->
+              <div class="form-group">
+                <label for="personas">Número de Personas</label>
+                <input type="number" id="personas" class="form-control" min="1" max="15" placeholder="Máximo 15" required>
+                <span class="error-message">El número de personas debe ser entre 1 y 15.</span>
+              </div>
+
+              <!-- Table Type -->
+              <div class="form-group">
+                <label for="tipoMesa">Tipo de Mesa</label>
+                <select id="tipoMesa" class="form-select pink-focus" required>
+                  <option value="" disabled selected>Selecciona zona</option>
+                  <option value="General">General (Consumo min. básico)</option>
+                  <option value="VIP">VIP (Consumo min. medio)</option>
+                  <option value="Ultra VIP">Ultra VIP (Consumo libre premium)</option>
+                </select>
+                <span class="error-message">Selecciona el tipo de mesa.</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">Confirmar Reservación</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Modal (Ticket display) -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-container">
+      <button class="modal-close" id="closeModalBtn" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+      
+      <div class="modal-body">
+        <div class="success-header">
+          <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+          <h4>¡Reservación Exitosa!</h4>
+          <p>Tu mesa ha sido reservada. Muestra este boleto en la entrada.</p>
+        </div>
+
+        <div class="ticket-wrapper">
+          <div class="ticket-title">Access Pass</div>
+          
+          <div class="ticket-info">
+            <div>
+              <span class="info-label">Cliente</span>
+              <div class="info-val" id="ticketName">Carlos Mendoza</div>
+            </div>
+            <div>
+              <span class="info-label">Mesa / Zona</span>
+              <div class="info-val" id="ticketZone">VIP</div>
+            </div>
+            <div>
+              <span class="info-label">Fecha</span>
+              <div class="info-val" id="ticketDate">Viernes, 12 Jun</div>
+            </div>
+            <div>
+              <span class="info-label">Hora</span>
+              <div class="info-val" id="ticketTime">10:30 PM</div>
+            </div>
+            <div>
+              <span class="info-label">Personas</span>
+              <div class="info-val" id="ticketGuests">6 Personas</div>
+            </div>
+            <div>
+              <span class="info-label">Folio</span>
+              <div class="info-val" id="ticketFolio">#ND-82049</div>
+            </div>
+          </div>
+
+          <div class="ticket-qr">
+            <!-- QR code generated via canvas in JS -->
+            <div id="qrcode" style="background: white; padding: 10px; border-radius: 8px;"></div>
+            <div class="qr-code-text" id="ticketFolioCode">ND-82049</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btnDownloadTicket" style="padding: 10px 20px; font-size: 0.85rem;">Descargar Boleto</button>
+        <button class="btn btn-outline-purple" id="btnFinishBooking" style="padding: 10px 20px; font-size: 0.85rem;">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">NU<span>DE</span></a>
+          <p>Las mejores noches de Jalpa comienzan aquí. Vive una experiencia premium e inigualable con la mejor música, ambiente y servicio VIP.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon social-pink" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/nudebar__/" target="_blank" class="social-icon social-pink" aria-label="Facebook Messenger"><i class="fab fa-facebook-messenger"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="reservaciones.html">Reservaciones</a></li>
+            <li><a href="opiniones.html">Opiniones</a></li>
+            <li><a href="croquis.html">Croquis</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-info">
+          <h4>Contacto</h4>
+          <ul>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Av. Hidalgo #123, Centro, Jalpa, Zacatecas, México</span>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <a href="tel:+524631002030">+52 (463) 100-2030</a>
+            </li>
+            <li>
+              <i class="fab fa-whatsapp"></i>
+              <a href="https://wa.me/524631002030" target="_blank">+52 (463) 100-2030</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:info@nudeclub.mx">info@nudeclub.mx</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-hours">
+          <h4>Horarios</h4>
+          <ul>
+            <li><span>Jueves</span> <span>10:00 PM - 4:00 AM</span></li>
+            <li><span>Viernes</span> <span>10:00 PM - 5:00 AM</span></li>
+            <li><span>Sábado</span> <span>10:00 PM - 5:00 AM</span></li>
+            <li><span>Dom - Mié</span> <span>Cerrado</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NUDE Club. Todos los derechos reservados. Proyecto académico de desarrollo web.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- QR Code generation script - load CDN for QR Code -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Auth script (must be first) -->
+  <script src="dist/js/auth.js"></script>
+  <!-- Global script -->
+  <script src="dist/js/main.js"></script>
+  <!-- Booking script -->
+  <script src="dist/js/reservaciones.js"></script>
+  <script>
+    AUTH.requireLogin();
+    AUTH.renderNavUser();
+  </script>
+</body>
+</html>

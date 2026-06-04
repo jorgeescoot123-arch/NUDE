@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión | NUDE Premium Club</title>
+  <meta name="description" content="Inicia sesión o crea tu cuenta en NUDE Jalpa para poder realizar reservaciones y dejar tus opiniones.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="dist/css/main.css">
+  <link rel="stylesheet" href="dist/css/login.css">
+</head>
+<body>
+
+  <header class="header scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">NU<span>DE</span></a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="reservaciones.html" class="nav-link">Reservaciones</a></li>
+        <li><a href="opiniones.html" class="nav-link">Opiniones</a></li>
+        <li><a href="croquis.html" class="nav-link">Croquis</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+      </ul>
+
+      <button class="burger-btn" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="reservaciones.html" class="nav-link">Reservaciones</a>
+    <a href="opiniones.html" class="nav-link">Opiniones</a>
+    <a href="croquis.html" class="nav-link">Croquis</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+  </div>
+
+  <main class="auth-page">
+    <div class="auth-wrapper">
+
+      <div class="auth-logo">
+        <a href="index.html" class="logo">NU<span>DE</span></a>
+        <p>El antro premium de Jalpa, Zacatecas</p>
+      </div>
+
+      <div class="auth-card">
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">
+            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+          </button>
+          <button class="auth-tab" id="tabRegister" onclick="switchTab('register')">
+            <i class="fas fa-user-plus"></i> Registrarse
+          </button>
+        </div>
+
+        <div class="auth-panel active" id="panelLogin">
+          <h2>Bienvenido de vuelta 👋</h2>
+          <p class="auth-subtitle">Inicia sesión para reservar tu mesa y más.</p>
+
+          <div class="auth-alert alert-error" id="loginError">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="loginErrorMsg">Error de acceso.</span>
+          </div>
+          <div class="auth-alert alert-success" id="loginSuccess">
+            <i class="fas fa-check-circle"></i>
+            <span id="loginSuccessMsg">¡Sesión iniciada!</span>
+          </div>
+
+          <form id="loginForm" novalidate>
+            <div class="form-group">
+              <label for="loginEmail">Correo Electrónico</label>
+              <input type="email" id="loginEmail" class="form-control" placeholder="correo@ejemplo.com" required autocomplete="email">
+              <span class="error-message">Introduce un correo válido.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="loginPassword">Contraseña</label>
+              <div class="input-icon-group">
+                <input type="password" id="loginPassword" class="form-control" placeholder="Tu contraseña" required autocomplete="current-password">
+                <button type="button" class="toggle-password" onclick="togglePwd('loginPassword', this)" aria-label="Ver contraseña">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <span class="error-message">Introduce tu contraseña.</span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-auth" id="loginSubmitBtn">
+              <span id="loginBtnText">Iniciar Sesión</span>
+              <span id="loginBtnLoader" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+            </button>
+          </form>
+
+          <p class="auth-divider">
+            ¿No tienes cuenta? <button onclick="switchTab('register')" class="auth-tab-link">Regístrate gratis</button>
+          </p>
+
+          <div class="admin-hint">
+            <i class="fas fa-shield-alt"></i> <strong>Acceso Admin:</strong><br>
+            Email: <strong>admin@nudeclub.mx</strong><br>
+            Contraseña: <strong>nude2026admin</strong>
+          </div>
+        </div>
+
+        <div class="auth-panel" id="panelRegister">
+          <h2>Crea tu cuenta 🎉</h2>
+          <p class="auth-subtitle">Únete y reserva tu mesa en NUDE de forma fácil y rápida.</p>
+
+          <div class="auth-alert alert-error" id="registerError">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="registerErrorMsg">Error al registrarse.</span>
+          </div>
+          <div class="auth-alert alert-success" id="registerSuccess">
+            <i class="fas fa-check-circle"></i>
+            <span>¡Cuenta creada exitosamente! Iniciando sesión...</span>
+          </div>
+
+          <form id="registerForm" novalidate>
+            <div class="form-group">
+              <label for="registerName">Nombre Completo</label>
+              <input type="text" id="registerName" class="form-control" placeholder="Tu nombre y apellido" required autocomplete="name">
+              <span class="error-message">Introduce tu nombre completo.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="registerEmail">Correo Electrónico</label>
+              <input type="email" id="registerEmail" class="form-control" placeholder="correo@ejemplo.com" required autocomplete="email">
+              <span class="error-message">Introduce un correo válido.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="registerPassword">Contraseña</label>
+              <div class="input-icon-group">
+                <input type="password" id="registerPassword" class="form-control" placeholder="Mínimo 6 caracteres" required autocomplete="new-password" id="registerPassword" oninput="checkStrength(this.value)">
+                <button type="button" class="toggle-password" onclick="togglePwd('registerPassword', this)" aria-label="Ver contraseña">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="password-strength" id="strengthBars">
+                <div class="strength-bar" id="sb1"></div>
+                <div class="strength-bar" id="sb2"></div>
+                <div class="strength-bar" id="sb3"></div>
+                <div class="strength-bar" id="sb4"></div>
+              </div>
+              <div class="strength-label" id="strengthLabel"></div>
+              <span class="error-message">La contraseña debe tener al menos 6 caracteres.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="registerConfirm">Confirmar Contraseña</label>
+              <div class="input-icon-group">
+                <input type="password" id="registerConfirm" class="form-control" placeholder="Repite tu contraseña" required autocomplete="new-password">
+                <button type="button" class="toggle-password" onclick="togglePwd('registerConfirm', this)" aria-label="Ver contraseña">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <span class="error-message">Las contraseñas no coinciden.</span>
+            </div>
+
+            <button type="submit" class="btn btn-secondary btn-auth" id="registerSubmitBtn">
+              <span id="registerBtnText">Crear Cuenta</span>
+              <span id="registerBtnLoader" style="display:none;"><i class="fas fa-spinner fa-spin"></i></span>
+            </button>
+          </form>
+
+          <p class="auth-divider">
+            ¿Ya tienes cuenta? <button onclick="switchTab('login')" class="auth-tab-link">Inicia Sesión</button>
+          </p>
+        </div>
+
+      </div>
+
+      <a href="index.html" class="auth-back">
+        <i class="fas fa-arrow-left"></i> Volver al inicio
+      </a>
+
+    </div>
+  </main>
+
+  <script src="dist/js/auth.js"></script>
+  <script src="dist/js/main.js"></script>
+  <script>
+    if (AUTH.isLoggedIn()) {
+      window.location.href = AUTH.isAdmin() ? 'admin.html' : 'index.html';
+    }
+
+    AUTH.renderNavUser();
+
+    function switchTab(tab) {
+      document.getElementById('panelLogin').classList.toggle('active', tab === 'login');
+      document.getElementById('panelRegister').classList.toggle('active', tab === 'register');
+      document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+      document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+    }
+
+    function togglePwd(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'fas fa-eye';
+      }
+    }
+
+    function checkStrength(val) {
+      const bars = [document.getElementById('sb1'), document.getElementById('sb2'), document.getElementById('sb3'), document.getElementById('sb4')];
+      const label = document.getElementById('strengthLabel');
+      bars.forEach(b => b.className = 'strength-bar');
+
+      if (!val) { label.textContent = ''; return; }
+
+      let score = 0;
+      if (val.length >= 6) score++;
+      if (val.length >= 10) score++;
+      if (/[A-Z]/.test(val) || /[0-9]/.test(val)) score++;
+      if (/[^a-zA-Z0-9]/.test(val)) score++;
+
+      const classes = ['weak', 'medium', 'medium', 'strong'];
+      const labels = ['Muy débil', 'Débil', 'Regular', 'Fuerte'];
+
+      for (let i = 0; i < score; i++) {
+        bars[i].classList.add(classes[score - 1]);
+      }
+      label.textContent = labels[score - 1] || '';
+    }
+
+    function showAlert(id, msgId, msg, type) {
+      const el = document.getElementById(id);
+      if (msgId) document.getElementById(msgId).textContent = msg;
+      el.className = `auth-alert alert-${type} show`;
+      setTimeout(() => el.classList.remove('show'), 5000);
+    }
+
+    function hideAlerts(prefix) {
+      ['Error','Success'].forEach(s => {
+        const el = document.getElementById(prefix + s);
+        if (el) el.classList.remove('show');
+      });
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      hideAlerts('login');
+
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      if (!email || !password) {
+        showAlert('loginError', 'loginErrorMsg', 'Por favor completa todos los campos.', 'error');
+        return;
+      }
+
+      document.getElementById('loginBtnText').style.display = 'none';
+      document.getElementById('loginBtnLoader').style.display = 'inline';
+
+      setTimeout(() => {
+        const result = AUTH.login({ email, password });
+
+        document.getElementById('loginBtnText').style.display = 'inline';
+        document.getElementById('loginBtnLoader').style.display = 'none';
+
+        if (!result.success) {
+          showAlert('loginError', 'loginErrorMsg', result.error, 'error');
+        } else {
+          showAlert('loginSuccess', 'loginSuccessMsg', `¡Bienvenido/a ${result.user.nombre}!`, 'success');
+          setTimeout(() => {
+            const params = new URLSearchParams(window.location.search);
+            const returnTo = params.get('return');
+            if (returnTo) {
+              window.location.href = decodeURIComponent(returnTo);
+            } else if (result.user.role === 'admin') {
+              window.location.href = 'admin.html';
+            } else {
+              window.location.href = 'index.html';
+            }
+          }, 1200);
+        }
+      }, 600);
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      hideAlerts('register');
+
+      const nombre = document.getElementById('registerName').value.trim();
+      const email = document.getElementById('registerEmail').value.trim();
+      const password = document.getElementById('registerPassword').value;
+      const confirm = document.getElementById('registerConfirm').value;
+
+      if (!nombre || !email || !password || !confirm) {
+        showAlert('registerError', 'registerErrorMsg', 'Por favor completa todos los campos.', 'error');
+        return;
+      }
+
+      if (password.length < 6) {
+        showAlert('registerError', 'registerErrorMsg', 'La contraseña debe tener al menos 6 caracteres.', 'error');
+        return;
+      }
+
+      if (password !== confirm) {
+        showAlert('registerError', 'registerErrorMsg', 'Las contraseñas no coinciden.', 'error');
+        return;
+      }
+
+      document.getElementById('registerBtnText').style.display = 'none';
+      document.getElementById('registerBtnLoader').style.display = 'inline';
+
+      setTimeout(() => {
+        const result = AUTH.register({ nombre, email, password });
+
+        document.getElementById('registerBtnText').style.display = 'inline';
+        document.getElementById('registerBtnLoader').style.display = 'none';
+
+        if (!result.success) {
+          showAlert('registerError', 'registerErrorMsg', result.error, 'error');
+        } else {
+          AUTH.login({ email, password });
+          document.getElementById('registerSuccess').classList.add('show');
+          setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+        }
+      }, 700);
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('tab') === 'register') switchTab('register');
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+@mixin glassmorphism {
+  background: $color-bg-card;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+@mixin glassmorphism-glow($color-glow) {
+  background: $color-bg-card;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba($color-glow, 0.2);
+  border-radius: $border-radius;
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 0 12px rgba($color-glow, 0.05),
+    0 0 15px rgba($color-glow, 0.1);
+  transition: $transition-smooth;
+
+  &:hover {
+    border-color: rgba($color-glow, 0.5);
+    box-shadow: 
+      0 12px 40px 0 rgba(0, 0, 0, 0.5),
+      inset 0 0 16px rgba($color-glow, 0.1),
+      0 0 25px rgba($color-glow, 0.25);
+  }
+}
+
+@mixin text-glow-neon($color) {
+  color: $color-white;
+  text-shadow: 
+    0 0 5px $color-white,
+    0 0 10px $color,
+    0 0 20px $color,
+    0 0 40px rgba($color, 0.8);
+}
+
+@mixin border-glow-neon($color) {
+  border-color: $color;
+  box-shadow: 
+    0 0 5px rgba($color, 0.3),
+    inset 0 0 5px rgba($color, 0.3),
+    0 0 15px rgba($color, 0.2),
+    inset 0 0 15px rgba($color, 0.2);
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 24px;
+}

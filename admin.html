@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Admin | NUDE Premium Club</title>
+  <meta name="description" content="Panel de administración de NUDE Club. Gestiona reservaciones y opiniones.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="dist/css/main.css">
+  <link rel="stylesheet" href="dist/css/admin.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">NU<span>DE</span></a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="reservaciones.html" class="nav-link">Reservaciones</a></li>
+        <li><a href="opiniones.html" class="nav-link">Opiniones</a></li>
+        <li><a href="croquis.html" class="nav-link">Croquis</a></li>
+        <li><a href="contacto.html" class="nav-link">Contacto</a></li>
+      </ul>
+      <button class="burger-btn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <a href="index.html" class="nav-link">Inicio</a>
+    <a href="reservaciones.html" class="nav-link">Reservaciones</a>
+    <a href="opiniones.html" class="nav-link">Opiniones</a>
+    <a href="croquis.html" class="nav-link">Croquis</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+  </div>
+
+  <main class="admin-page">
+    <div class="container">
+
+      <div class="admin-hero">
+        <div class="admin-hero-content">
+          <div>
+            <div class="admin-badge"><i class="fas fa-shield-alt"></i> Panel Administrativo</div>
+            <h1>Panel de Control</h1>
+            <p>Bienvenido al área de administración de <strong>NUDE Club</strong>.</p>
+          </div>
+          <button class="btn btn-secondary admin-logout-btn" id="adminLogoutBtn">
+            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-stats" id="adminStats">
+        <div class="stat-card">
+          <div class="stat-icon">🎟️</div>
+          <div class="stat-value" id="statReservations">0</div>
+          <div class="stat-label">Reservaciones</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-value" id="statReviews">0</div>
+          <div class="stat-label">Opiniones</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-value" id="statUsers">0</div>
+          <div class="stat-label">Usuarios</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-value" id="statAvgRating">—</div>
+          <div class="stat-label">Puntuación Media</div>
+        </div>
+      </div>
+
+      <div class="admin-section-tabs">
+        <button class="admin-section-tab active" id="sTabReservations" onclick="showAdminPanel('reservations')">
+          <i class="fas fa-calendar-alt"></i> Reservaciones
+          <span class="admin-tab-badge" id="badgeReservations">0</span>
+        </button>
+        <button class="admin-section-tab" id="sTabReviews" onclick="showAdminPanel('reviews')">
+          <i class="fas fa-star"></i> Opiniones
+          <span class="admin-tab-badge" id="badgeReviews">0</span>
+        </button>
+        <button class="admin-section-tab" id="sTabUsers" onclick="showAdminPanel('users')">
+          <i class="fas fa-users"></i> Usuarios
+          <span class="admin-tab-badge" id="badgeUsers">0</span>
+        </button>
+      </div>
+
+      <div class="admin-panel active" id="adminPanelReservations">
+        <div class="admin-controls">
+          <input type="text" class="admin-search" id="searchReservations" placeholder="🔍 Buscar por nombre, folio o zona..." oninput="renderReservations()">
+          <select class="admin-filter-select" id="filterReservationsZone" onchange="renderReservations()">
+            <option value="all">Todas las zonas</option>
+            <option value="General">General</option>
+            <option value="VIP">VIP</option>
+            <option value="Ultra VIP">Ultra VIP</option>
+          </select>
+        </div>
+
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Folio</th>
+                <th>Cliente</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Personas</th>
+                <th>Zona</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="reservationsTableBody">
+              <tr><td colspan="9"><div class="admin-empty"><i class="fas fa-calendar-times"></i>No hay reservaciones aún.</div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="admin-panel" id="adminPanelReviews">
+        <div class="admin-controls">
+          <input type="text" class="admin-search" id="searchReviews" placeholder="🔍 Buscar opinión por nombre o texto..." oninput="renderReviews()">
+          <select class="admin-filter-select" id="filterReviewsRating" onchange="renderReviews()">
+            <option value="all">Todas las calificaciones</option>
+            <option value="5">5 ⭐⭐⭐⭐⭐</option>
+            <option value="4">4 ⭐⭐⭐⭐</option>
+            <option value="3">3 ⭐⭐⭐</option>
+            <option value="2">2 ⭐⭐</option>
+            <option value="1">1 ⭐</option>
+          </select>
+        </div>
+        <div id="reviewsAdminContainer"></div>
+      </div>
+
+      <div class="admin-panel" id="adminPanelUsers">
+        <div class="admin-controls">
+          <input type="text" class="admin-search" id="searchUsers" placeholder="🔍 Buscar usuario por nombre o correo..." oninput="renderUsers()">
+        </div>
+        <div class="admin-table-wrapper">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Registrado</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody">
+              <tr><td colspan="5"><div class="admin-empty"><i class="fas fa-users"></i>No hay usuarios.</div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="confirm-overlay" id="confirmOverlay">
+    <div class="confirm-box">
+      <div class="confirm-icon"><i class="fas fa-trash-alt"></i></div>
+      <h3 id="confirmTitle">¿Eliminar este elemento?</h3>
+      <p id="confirmMsg">Esta acción no se puede deshacer.</p>
+      <div class="confirm-actions">
+        <button class="btn btn-outline-purple" id="confirmCancelBtn" style="padding: 10px 24px;">Cancelar</button>
+        <button class="btn btn-primary" id="confirmOkBtn" style="padding: 10px 24px; background: linear-gradient(135deg, #ff3250, #ff6080);">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast">
+    <span class="toast-icon" id="toastIcon"></span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <script src="dist/js/auth.js"></script>
+  <script src="dist/js/main.js"></script>
+  <script>
+    AUTH.requireAdmin();
+    AUTH.renderNavUser();
+
+    const RESERVATIONS_KEY = 'nude_reservaciones';
+    const REVIEWS_KEY = 'nude_opiniones';
+
+    function getReservations() {
+      try { return JSON.parse(localStorage.getItem(RESERVATIONS_KEY)) || []; } catch { return []; }
+    }
+
+    function saveReservations(data) {
+      localStorage.setItem(RESERVATIONS_KEY, JSON.stringify(data));
+    }
+
+    function getReviews() {
+      try { return JSON.parse(localStorage.getItem(REVIEWS_KEY)) || []; } catch { return []; }
+    }
+
+    function saveReviews(data) {
+      localStorage.setItem(REVIEWS_KEY, JSON.stringify(data));
+    }
+
+    document.getElementById('adminLogoutBtn').addEventListener('click', AUTH.logout);
+
+    function showAdminPanel(name) {
+      ['reservations','reviews','users'].forEach(p => {
+        document.getElementById('adminPanel' + capitalize(p)).classList.toggle('active', p === name);
+        document.getElementById('sTab' + capitalize(p)).classList.toggle('active', p === name);
+      });
+    }
+
+    function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+
+    function updateStats() {
+      const reservations = getReservations();
+      const reviews = getReviews();
+      const users = AUTH.getAllUsers();
+
+      document.getElementById('statReservations').textContent = reservations.length;
+      document.getElementById('statReviews').textContent = reviews.length;
+      document.getElementById('statUsers').textContent = users.length;
+      document.getElementById('badgeReservations').textContent = reservations.length;
+      document.getElementById('badgeReviews').textContent = reviews.length;
+      document.getElementById('badgeUsers').textContent = users.length;
+
+      if (reviews.length > 0) {
+        const avg = (reviews.reduce((s,r) => s + r.calificacion, 0) / reviews.length).toFixed(1);
+        document.getElementById('statAvgRating').textContent = avg;
+      } else {
+        document.getElementById('statAvgRating').textContent = '—';
+      }
+    }
+
+    function renderReservations() {
+      const reservations = getReservations();
+      const search = document.getElementById('searchReservations').value.toLowerCase();
+      const zone = document.getElementById('filterReservationsZone').value;
+      const tbody = document.getElementById('reservationsTableBody');
+
+      let filtered = reservations.filter(r => {
+        const matchSearch = !search ||
+          (r.nombre || '').toLowerCase().includes(search) ||
+          (r.folio || '').toLowerCase().includes(search) ||
+          (r.tipoMesa || '').toLowerCase().includes(search) ||
+          (r.email || '').toLowerCase().includes(search);
+        const matchZone = zone === 'all' || r.tipoMesa === zone;
+        return matchSearch && matchZone;
+      });
+
+      filtered.sort((a,b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9"><div class="admin-empty"><i class="fas fa-calendar-times"></i>No se encontraron reservaciones.</div></td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(r => {
+        const zoneClass = r.tipoMesa === 'General' ? 'zone-general' : r.tipoMesa === 'VIP' ? 'zone-vip' : 'zone-ultravip';
+        const fecha = r.fecha ? new Date(r.fecha + 'T00:00:00').toLocaleDateString('es-MX', { weekday: 'short', day:'2-digit', month:'short' }) : '—';
+        return `
+          <tr>
+            <td><code style="color: var(--color-purple); font-size:0.78rem;">${r.folio || '—'}</code></td>
+            <td><strong>${escapeHtml(r.nombre || '—')}</strong></td>
+            <td>${escapeHtml(r.telefono || '—')}</td>
+            <td style="font-size:0.8rem; color:var(--color-text-muted);">${escapeHtml(r.email || '—')}</td>
+            <td>${fecha}</td>
+            <td>${r.hora || '—'}</td>
+            <td style="text-align:center;">${r.personas || '—'}</td>
+            <td><span class="zone-badge ${zoneClass}">${escapeHtml(r.tipoMesa || '—')}</span></td>
+            <td>
+              <button class="btn-icon btn-delete" title="Eliminar reservación" onclick="confirmDelete('reservation', '${r.folio}')">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function deleteReservation(folio) {
+      const data = getReservations().filter(r => r.folio !== folio);
+      saveReservations(data);
+      renderReservations();
+      updateStats();
+      showToast('Reservación eliminada correctamente.', 'success');
+    }
+
+    function renderReviews() {
+      const reviews = getReviews();
+      const search = document.getElementById('searchReviews').value.toLowerCase();
+      const rating = document.getElementById('filterReviewsRating').value;
+      const container = document.getElementById('reviewsAdminContainer');
+
+      let filtered = reviews.filter(r => {
+        const matchSearch = !search ||
+          (r.nombre || '').toLowerCase().includes(search) ||
+          (r.comentario || '').toLowerCase().includes(search);
+        const matchRating = rating === 'all' || String(r.calificacion) === rating;
+        return matchSearch && matchRating;
+      });
+
+      filtered.sort((a,b) => new Date(b.fecha || b.createdAt || 0) - new Date(a.fecha || a.createdAt || 0));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="admin-empty"><i class="fas fa-star"></i>No se encontraron opiniones.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(r => {
+        const stars = '★'.repeat(r.calificacion) + '☆'.repeat(5 - r.calificacion);
+        const initials = (r.nombre || 'U').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+        const dateStr = r.fecha ? new Date(r.fecha).toLocaleDateString('es-MX', { day:'2-digit', month:'short', year:'numeric' }) : 'Sin fecha';
+        return `
+          <div class="admin-review-card" id="review-${r.id}">
+            <div class="admin-review-avatar">${initials}</div>
+            <div class="admin-review-content">
+              <div class="admin-review-header">
+                <span class="admin-review-name">${escapeHtml(r.nombre || 'Anónimo')}</span>
+                <span class="admin-review-date">${dateStr}</span>
+              </div>
+              <div class="admin-review-stars">${stars} <span style="color:var(--color-text-muted); font-size:0.78rem;">(${r.calificacion}/5)</span></div>
+              <p class="admin-review-text">${escapeHtml(r.comentario || '')}</p>
+            </div>
+            <div class="admin-review-actions">
+              <button class="btn-icon btn-delete" title="Eliminar opinión" onclick="confirmDelete('review', '${r.id}')">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function deleteReview(id) {
+      const data = getReviews().filter(r => r.id !== id);
+      saveReviews(data);
+      renderReviews();
+      updateStats();
+      showToast('Opinión eliminada correctamente.', 'success');
+    }
+
+    function renderUsers() {
+      const users = AUTH.getAllUsers();
+      const search = document.getElementById('searchUsers').value.toLowerCase();
+      const tbody = document.getElementById('usersTableBody');
+
+      const filtered = users.filter(u => !search ||
+        (u.nombre || '').toLowerCase().includes(search) ||
+        (u.email || '').toLowerCase().includes(search)
+      );
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5"><div class="admin-empty"><i class="fas fa-users"></i>No se encontraron usuarios.</div></td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(u => {
+        const dateStr = u.createdAt ? new Date(u.createdAt).toLocaleDateString('es-MX', {day:'2-digit', month:'short', year:'numeric'}) : '—';
+        return `
+          <tr>
+            <td><code style="color:var(--color-text-muted); font-size:0.75rem;">${u.id.slice(0,16)}…</code></td>
+            <td><strong>${escapeHtml(u.nombre || '—')}</strong></td>
+            <td style="font-size:0.85rem;">${escapeHtml(u.email || '—')}</td>
+            <td><span class="user-role-pill role-${u.role}">${u.role === 'admin' ? '👑 Admin' : '🎟️ Usuario'}</span></td>
+            <td style="font-size:0.82rem; color:var(--color-text-muted);">${dateStr}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    let pendingDelete = null;
+
+    function confirmDelete(type, id) {
+      const labels = {
+        reservation: ['¿Eliminar reservación?', `Se eliminará permanentemente la reservación <strong>${id}</strong>.`],
+        review: ['¿Eliminar opinión?', 'Se eliminará permanentemente esta reseña de cliente.']
+      };
+      document.getElementById('confirmTitle').textContent = labels[type][0];
+      document.getElementById('confirmMsg').innerHTML = labels[type][1];
+      pendingDelete = { type, id };
+      document.getElementById('confirmOverlay').classList.add('active');
+    }
+
+    document.getElementById('confirmCancelBtn').addEventListener('click', () => {
+      document.getElementById('confirmOverlay').classList.remove('active');
+      pendingDelete = null;
+    });
+
+    document.getElementById('confirmOkBtn').addEventListener('click', () => {
+      document.getElementById('confirmOverlay').classList.remove('active');
+      if (!pendingDelete) return;
+      if (pendingDelete.type === 'reservation') deleteReservation(pendingDelete.id);
+      else if (pendingDelete.type === 'review') deleteReview(pendingDelete.id);
+      pendingDelete = null;
+    });
+
+    document.getElementById('confirmOverlay').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('confirmOverlay')) {
+        document.getElementById('confirmOverlay').classList.remove('active');
+        pendingDelete = null;
+      }
+    });
+
+    function showToast(msg, type = 'success') {
+      const toast = document.getElementById('adminToast');
+      const icon = document.getElementById('toastIcon');
+      document.getElementById('toastMsg').textContent = msg;
+      toast.className = `admin-toast toast-${type}`;
+      icon.className = `toast-icon fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}`;
+      setTimeout(() => toast.classList.add('show'), 10);
+      setTimeout(() => toast.classList.remove('show'), 3500);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    updateStats();
+    renderReservations();
+    renderReviews();
+    renderUsers();
+  </script>
+</body>
+</html>

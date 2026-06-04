@@ -1,0 +1,242 @@
+.reviews-dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 20px;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+    gap: 50px;
+  }
+}
+
+// Review statistics side panel
+.reviews-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.rating-score-card {
+  text-align: center;
+  padding: 30px;
+  border-radius: $border-radius;
+  background-color: rgba(255, 255, 255, 0.015);
+  border: 1px solid $color-border;
+
+  .big-score {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: $color-white;
+    font-family: $font-heading;
+    @include text-glow-neon($color-vip-gold);
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $color-text-muted;
+  }
+}
+
+.rating-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .rating-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: $color-text-muted;
+
+    .star-num {
+      width: 15px;
+      text-align: right;
+    }
+
+    .progress-bar-bg {
+      flex: 1;
+      height: 8px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, $color-neon-purple, $color-neon-pink);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 1s ease-in-out;
+    }
+
+    .rating-percentage {
+      width: 35px;
+      text-align: right;
+    }
+  }
+}
+
+// Star Rating input (in form)
+.star-rating-input {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+
+  input {
+    display: none;
+  }
+
+  label {
+    color: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transition: $transition-smooth;
+    margin-bottom: 0 !important; // override form layout
+
+    &:hover,
+    &:hover ~ label,
+    input:checked ~ label,
+    input:checked + label {
+      color: $color-vip-gold;
+      text-shadow: 0 0 10px rgba($color-vip-gold, 0.6);
+    }
+  }
+}
+
+// Review Item Cards list
+.reviews-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.review-item-card {
+  padding: 24px;
+  @include glassmorphism;
+  border-color: rgba($color-neon-purple, 0.15);
+  transition: $transition-smooth;
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .reviewer-info {
+      h4 {
+        font-size: 1.15rem;
+        font-family: $font-heading;
+        color: $color-white;
+      }
+
+      .review-date {
+        font-size: 0.8rem;
+        color: $color-text-muted;
+        margin-top: 2px;
+      }
+    }
+  }
+
+  .review-body {
+    p {
+      font-size: 0.95rem;
+      color: $color-text;
+      line-height: 1.6;
+    }
+  }
+
+  .review-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 12px;
+
+    button {
+      background: transparent;
+      border: none;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      transition: $transition-smooth;
+    }
+
+    .btn-edit-review {
+      color: $color-text-muted;
+      &:hover {
+        color: $color-neon-purple;
+        text-shadow: 0 0 5px rgba($color-neon-purple, 0.3);
+      }
+    }
+
+    .btn-delete-review {
+      color: $color-text-muted;
+      &:hover {
+        color: $color-neon-pink;
+        text-shadow: 0 0 5px rgba($color-neon-pink, 0.3);
+      }
+    }
+  }
+
+  &:hover {
+    border-color: rgba($color-neon-purple, 0.35);
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.4),
+      0 0 15px rgba($color-neon-purple, 0.1);
+  }
+}
+
+// Review count status
+.reviews-count-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  border-bottom: 1px solid $color-border;
+  padding-bottom: 15px;
+
+  h3 {
+    font-size: 1.4rem;
+    font-family: $font-heading;
+  }
+
+  .filter-select {
+    width: auto;
+    padding: 8px 30px 8px 12px;
+    font-size: 0.85rem;
+    background-position: right 10px center;
+  }
+}
+
+// Empty state
+.reviews-empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: $color-text-muted;
+
+  i {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.05);
+    margin-bottom: 15px;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    color: $color-text;
+    margin-bottom: 8px;
+  }
+}
